@@ -15,4 +15,8 @@ export interface Booking {
   end_time: string;
 }
 
+export interface BookingListProps {
+  bookings: Booking[];
+  error: string | null;
+}
 
