@@ -1,4 +1,7 @@
-import { Typography, Box } from '@mui/material';
+import React from 'react';
+import Link from 'next/link';
+import { BookingListProps } from '../types/bookingData';
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper, TableContainer, Typography, Box } from '@mui/material';
 
 const BookingList: React.FC<BookingListProps> = ({ bookings, error }) => {
   if (error) {
@@ -15,15 +18,19 @@ const BookingList: React.FC<BookingListProps> = ({ bookings, error }) => {
         <Table>
           <TableHead sx={{ backgroundColor: "#488598" }}>
             <TableRow>
-              <TableCell sx={{ color: "white" }}>Booking</TableCell>
-              <TableCell sx={{ color: "white" }}>Details</TableCell>
+              <TableCell sx={{ color: "white"}}>Booking</TableCell>
+              <TableCell sx={{ color: "white"}}>Details</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {bookings.map((booking) => (
               <TableRow key={booking.id}>
-                <TableCell>A Booking on {booking.date}</TableCell>
-                <TableCell>Details</TableCell>
+                <TableCell>A Booking on {new Date(booking.date).toISOString().split('T')[0]} starting at {booking.start_time}</TableCell>
+                <TableCell>
+                  <Link href={`/booking/${booking.id}`} passHref style={{ color: "blue"}}>
+                      View Details
+                  </Link>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -32,3 +39,5 @@ const BookingList: React.FC<BookingListProps> = ({ bookings, error }) => {
     </Box>
   );
 };
+
+export default BookingList;
