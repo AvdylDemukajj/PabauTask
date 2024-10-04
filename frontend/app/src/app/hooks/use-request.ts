@@ -38,4 +38,19 @@ export async function getBookingsById(id: number): Promise<{ data?: Booking; err
 }
 
 
+export async function postBooking(formData: BookingData) {
+    try {
+        const response = await axios.post('http://host.docker.internal:5000/api/bookings', formData);
+
+        if (response.status === 201) {
+            return response.data;
+        } else {
+            const errorData = response.data;
+            throw new Error(errorData.message || ' Failed to post data. Please try again! ');
+        }
+    } catch (error: any) {
+        return { error: error.message || ' Failed to post data. Please try again! ' };
+    }
+}
+
 
