@@ -1,15 +1,22 @@
 import React from 'react';
 import { BookingDetailProps } from '../types/bookingData';
+import { Card, CardContent, CircularProgress, Box } from '@mui/material';
 
 const BookingDetail: React.FC<BookingDetailProps> = ({ booking }) => {
     return (
-        <div>
+        <Box>
             {booking ? (
-                <div>Booking Details Placeholder</div>
+                <Card sx={{ maxWidth: 600, margin: 'auto', marginTop: 2 }}>
+                    <CardContent>
+                        Booking Details
+                    </CardContent>
+                </Card>
             ) : (
-                <div>Loading...</div>
+                <Box className='loader-parent'>
+                    <CircularProgress />
+                </Box>
             )}
-        </div>
+        </Box>
     );
 };
 
