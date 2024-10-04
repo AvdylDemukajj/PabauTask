@@ -1,5 +1,4 @@
-import React from 'react';
-import { BookingListProps } from '../types/bookingData';
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper, TableContainer } from '@mui/material';
 
 const BookingList: React.FC<BookingListProps> = ({ bookings, error }) => {
   if (error) {
@@ -10,7 +9,24 @@ const BookingList: React.FC<BookingListProps> = ({ bookings, error }) => {
     return <p>No bookings found.</p>;
   }
 
-  return <div>Booking List Placeholder</div>;
+  return (
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Booking</TableCell>
+            <TableCell>Details</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {bookings.map((booking) => (
+            <TableRow key={booking.id}>
+              <TableCell>Booking on {booking.date}</TableCell>
+              <TableCell>Details</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
 };
-
-export default BookingList;
