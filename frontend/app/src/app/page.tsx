@@ -22,14 +22,17 @@ const Home: React.FC = async () => {
         <Box>
           <Typography sx={{ padding: 2, textAlign: "center", color: "gray", fontSize: "2rem" }}>Pabau Task</Typography>
           <BookingList bookings={bookings} error={error} />
+          <Link href="/addBooking" style={{ display: "flex", margin: "20px auto" }}>
+            <Button sx={{ mt: 2, backgroundColor: "#488598 !important", maxWidth: "500px", color: "white", margin: "auto", '&:hover': { backgroundColor: "#33677A" } }}>
+              Add Booking
+            </Button>
+          </Link>
         </Box>
       ) : (
         <Box className='loader-parent'><Box className='loader'></Box></Box>
       )}
     </Box>
   );
-  
 };
-
 
 export default Home;
