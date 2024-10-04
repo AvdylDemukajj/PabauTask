@@ -20,3 +20,9 @@ export interface BookingListProps {
   error: string | null;
 }
 
+export interface BookingDetailPageProps {
+  params: {
+      id: string;
+  };
+}
+
