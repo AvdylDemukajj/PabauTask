@@ -26,3 +26,7 @@ export interface BookingDetailPageProps {
   };
 }
 
+export interface BookingDetailProps {
+  booking: Booking;
+}
+
