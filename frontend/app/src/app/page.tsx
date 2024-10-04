@@ -1,22 +1,15 @@
-async function getBookings() {
-  const res = await fetch('http://host.docker.internal:5000/api/bookings', { cache: 'no-store', mode: 'no-cors' })
- 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
- 
-  return res.json()
-}
+import React from 'react';
+import Link from 'next/link';
+import { getBookings } from './hooks/use-request';
+import BookingList from './components/BookingList';
+import { Booking } from './types/bookingData';
+import { Box, Button, Typography } from '@mui/material';
 
 const Home: React.FC = async () => {
-
-  const bookings = await getBookings()
-
   return (
-    <div>
-      <h1>Current booking count: {bookings.length}</h1>
-
-    </div>
+    <Box>
+      {/* Placeholder for content */}
+    </Box>
   );
 };
 
