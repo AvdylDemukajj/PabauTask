@@ -18,9 +18,17 @@ const Home: React.FC = async () => {
 
   return (
     <Box>
-      {/* Placeholder for content */}
+      {bookings.length > 0 ? (
+        <Box>
+          <Typography sx={{ padding: 2, textAlign: "center", color: "gray", fontSize: "2rem" }}>Pabau Task</Typography>
+          <BookingList bookings={bookings} error={error} />
+        </Box>
+      ) : (
+        <Box className='loader-parent'><Box className='loader'></Box></Box>
+      )}
     </Box>
   );
+  
 };
 
 
