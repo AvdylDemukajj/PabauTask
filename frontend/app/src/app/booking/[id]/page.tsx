@@ -1,4 +1,5 @@
 import React from 'react';
+import BookingDetail from '@/app/components/BookingDetail';
 import { getBookingsById } from '@/app/hooks/use-request';
 import { Typography } from '@mui/material';
 
@@ -10,13 +11,11 @@ const BookingDetailPage: React.FC = async ({ params }) => {
         return <p style={{ color: "red", textAlign:"center", marginTop: "20px", fontSize: "25px" }}>Error: {error}</p>;
     }
 
-    if (!data) {
+    if (data) {
+        return <BookingDetail booking={data} />;
+    } else {
         return <Typography>No bookings found.</Typography>;
     }
-
-    return (
-        <div>Booking Detail Page Placeholder</div>
-    );
 };
 
 export default BookingDetailPage;
